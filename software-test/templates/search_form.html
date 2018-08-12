@@ -1,0 +1,34 @@
+﻿<html>
+<head>
+    <title>Software Test</title>
+</head>
+<body>
+    <h1 align="center">Software Test</h1>
+	
+	
+    {% if form.errors %}
+        <p style="color: red">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+    <form align="center" action="/results/" method="get">
+    	<h3 align="center">Select</h3>
+        <table align="center">
+            {{ form.as_table }}
+        </table>
+        
+        <h3 align="center">Select Score</h3>
+        
+        <table align="center">
+            {{ form1.as_table }}
+        </table>
+        <div align="center">
+        <input type="submit" value="Submit" >
+        </div>
+    </form>
+    
+    
+
+</body>
+</html>
