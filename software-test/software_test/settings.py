@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(l-2d-xkv@o3v&!4ejwif*amez#!(k5g&wqx6@b-@6d+&-n51z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -119,7 +119,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = '/var/www/mysite/static'
 STATICFILES_DIRS = (
     ('css', os.path.join(STATIC_ROOT, 'css')),
     ('img', os.path.join(STATIC_ROOT, 'img')),

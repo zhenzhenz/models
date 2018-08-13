@@ -259,7 +259,7 @@ def simple_path(beg, end, depth, conserv):
     #print('search done!')
     #路径格式转换
     temp_ans = get_compound_pair_list(compound_result)
-    print(temp_ans)
+    # print(temp_ans)
     # for i in temp_ans:
     #     print(i)
     #print('convert done!')
