@@ -1,15 +1,13 @@
 <html>
 <head>
-	<meta http-equiv="Page-Enter" content="revealTrans(Duration=2.0,Transition=12)" />
     <title>Software Test</title>
      <link href="/static/css/styles.css" type="text/css"
       rel="stylesheet" />
-    <link rel="shortcut icon" href="/static/img/favicon4.ico" >
 </head>
 <body>
     <div class=.bg-pan-left></div>
     <div id="logo">
-        <img class="photo" src="/static/img/logo3.png" width="85px">
+        <img class="photo" src="/static/img/logo3.png" width="90px">
     </div>
     <h1 align="center">Software Test</h1>
     
@@ -18,33 +16,32 @@
             Please correct the error{{ form.errors|pluralize }} below.
         </p>
     {% endif %}
-    <form action="/results/" method="get">
-		<div class="Sel" id="Sel1" >
-		    <ul id="select">
-		        <h3>Select</h3>
-	        	<li> Microorganism:{{form.Microorganism}} </li> 
-	            <li> Input :{{form.Input}} </li>  
-	            <li> Output :{{form.Output}} </li> 
-	            <li> Maxlength :{{form.MaxLength}} </li>
-	            <li> Conservation :{{form.result_conservation}} </li>         
-		   </ul>
-		</div> 
-		<div class="Sel" id ="Sel2">
-		    <ul id="selectScore">
-		        <h3 >Select  Score</h3>            
-		        <li> Gibbs :{{form1.Gibbs}} </li>
+    
+    <form align="center" action="/results/" method="get">
+	    <div class="Sel" id="Sel1" >
+	        <ul id="select">
+	            <h3>Select</h3>
+	            	<li> Microorganism:{{form.Microorganism}} </li> 
+		            <li> Input :{{form.Input}} </li>  
+		            <li> Output :{{form.Output}} </li> 
+		            <li> Maxlength :{{form.MaxLength}} </li>        
+	       </ul>
+	    </div> 
+	    <div class="Sel" id ="Sel2">
+	        <ul id="selectScore">
+	            <h3 >Select  Score</h3>            
+	            <li> Gibbs :{{form1.Gibbs}} </li>
 	            <li> Toxicity :{{form1.Toxicity}} </li>               
 	            <li> Atom conservation :{{form1.conservation}} </li>  
-	            <li> Required :{{form1.requrired}} </li>
-                <li>Not required :{{form1.not_requrired}}</li>       
-		    </ul>      
-		</div>    
+	            <li> Internal or external :{{form1.Internal_or_external}} </li>        
+	        </ul>   
+	    </div>    
 		<div id="sub">
-		    <input type="submit" value="Submit" >
-		</div>
+	        <input type="submit" value="Submit" >
+	    </div>
 	</form>
     <div id="pattern">
-         <img class="photo" src="/static/img/pattern8.png" width="1270px">
+         <img class="photo" src="/static/img/pattern4.png" width="1250px">
     </div>  
 </body>
 </html>

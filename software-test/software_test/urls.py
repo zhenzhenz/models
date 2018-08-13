@@ -19,6 +19,7 @@ from django.conf.urls import url
 from search.views import search
 from results.views import results
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^search/$',search),

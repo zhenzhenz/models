@@ -14,6 +14,7 @@ def results(request):
             data=form.cleaned_data
             data1=form1.cleaned_data
             result=main(data,data1)
+            print(result[0])
             return render_to_response('results.html',{'result':result})
     else:
         return render_to_response('main.html')
