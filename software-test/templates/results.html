@@ -1,29 +1,56 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
 <head>
-	<meta http-equiv="Page-Enter" content="revealTrans(Duration=2.0,Transition=12)" />
     <title >SoftWare-Test</title>
-    <title >SoftWare-Test</title>
-    <link href="/static/css/styles 2.css" type="text/css"
+    <link href="/static/css/stylesR.css" type="text/css"
       rel="stylesheet" />
     <link rel="shortcut icon" href="/static/img/favicon4.ico" >
-    <meta http-equiv="Site-Exit" content="revealTrans(Duration=2.0,Transition=7)" /> 
+    <meta http-equiv="page-Enter" content="revealTrans(Duration=3.0,Transition=23)">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        window.onload=function() {
+            console.log("aaa")
+            $.ajax({
+                url:"/test_ajax/",
+                type:"POST",
+                data:{{data}},
+                success:function(result){
+                    result=result.split('&&');
+                    for(var i=0;i<result.length;i++)
+                    {
+                        result[i]=result[i].split('$$')
+                    };
+                    var str = "<table align='center'>";
+                    str+="<thead><tr><td>Reaction</td><td>Route</td><td>Score</td><td>ΔrG'</td><td>Enzyme</td><td>Compound name</td></tr></thead>"
+                    for(var i=0;i<result.length;i++)
+                    {
+                        str+="<tr>"
+                        for(var j=0;j<result[i].length;j++)
+                            {
+                                str+="<td>"+result[i][j]+"</td>"
+                            };
+                            str+="</tr>"
+                        //str += "<tr><td>"+result[i][0]+"</td><td>"+result[i][1]+"</td><td>"+result[i][2]+"</td><td>"+result[i][3]+"</td><td>"+result[i][4]+"</td><td>"+result[i][5]+"</td></tr>";
+                    };
+                    str +="</table>";
+                    document.getElementById("div").innerHTML = str;
+                }
+            });
+        }
+    </script>
+
 </head>
 <body>
-    <div id="logo">
-        <img class="photo" src="/static/img/logo3.png" width="80px">
+    <div id="logo"><a href="/Alpha ant/">
+        <img class="photo" src="/static/img/logo1.png" width="85px"></a>
     </div>
     <h1 align="center">Results </h1>
-   <!--  {% comment %}
-    {% for i in result %}  
-    <h5>{{ i }}</h5>  
-    {% endfor %}
-    {% endcomment %} -->
     
-    <table  align="center" >
+    <div id='div'>
+        <table  align="center" >
         <thead>
             <tr>
-        		<th>Reaction</th>
+                <th>Reaction</th>
                 <th>Route</th>
                 <th>Score</th>
                 <th>ΔrG'</th>
@@ -31,27 +58,17 @@
                 <th>Compound name</th>
             </tr>
         </thead>
-        	{% for i in result %}   
- 			<tr>
-	 			{% for j in i %}
-	 			<th>{{ j }}</th>
-	 			{% endfor %}
- 			</tr>
-    		{% endfor %}
+        </table>
+    </div>
 
-       <!--  </tr>
- 		{% for i in result %}   
- 		<tr>
- 			{% for j in i %}
- 			<th>{{ j }}</th>
- 			{% endfor %}
- 		</tr>
-    	{% endfor %} -->
-    <a href=/search/>
-        </table>    
+    <a href="/search/">   
         <button class="button"style="vertical-align:middle">
             <span>Return </span>
         </button>
     </a>
+    <div id="pattern">
+        <img class="photo" src="/static/img/back.png" width="100%">
+    </div> 
 </body>
+
 </html>

@@ -35,7 +35,7 @@ with open("data//reaction_enzyme_pair.csv") as enzyme_file:
 with open("data//compound_name_pair.csv") as c_file:
     c_reader = csv.reader(c_file)
     for c in c_reader:
-        compound_dict.update({c[0]: c[1]})
+        compound_dict.update({c[0]: c[1:]})
     compound_dict.update({'':''})
 
 with open('data//Gibbs.pkl', 'rb') as g_f:
@@ -214,7 +214,7 @@ def attach_inform(sort_result):
         cnames = []
         for com in row[1]:
             temp = com.split('_')
-            cnames.append([compound_dict[temp[0]],compound_dict[temp[1]]])
+            cnames.append([compound_dict[temp[0]][0],compound_dict[temp[1]][0]])
 
         # gb = 0.0
         # for i in range(0,len(row[0])):
@@ -329,7 +329,7 @@ def trans_C(c):
     for key,val in compound_dict.items():
         if key==c:
             return c
-        elif val==c:
+        elif c in val:
             return key
         
 def trans_list(l):
@@ -337,24 +337,24 @@ def trans_list(l):
         l[i]=trans_C(l[i])
     return l
 
-def main(condon,condon1):
+def main(condon):
     global full_path
     full_path = []
     start_compound = trans_C(condon['Input'])
     target_compound = trans_C(condon['Output'])
 	
-    print(start_compound)
-    print(target_compound)
+    #print(start_compound)
+    #print(target_compound)
       
     depth = condon['MaxLength']
-    conservation = condon['result_conservation']
+    conservation = int(condon['result_conservation'])
     
     global w_gibbs
     global w_toxicity
-    w_gibbs = condon1['Gibbs']
-    w_toxicity = condon1['Toxicity']
-    required_compound=trans_list(condon1['requrired'].strip().split(','))
-    not_required_compound=trans_list(condon1['not_requrired'].strip().split(','))
+    w_gibbs = float(condon['Gibbs'])
+    w_toxicity = float(condon['Toxicity'])
+    required_compound=trans_list(condon['requrired'].strip().split(','))
+    not_required_compound=trans_list(condon['not_requrired'].strip().split(','))
 	
     if start_compound!='' and target_compound!='':
         result = simple_path(start_compound, target_compound, depth, conservation)

@@ -16,13 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from search.views import search
-from results.views import results
-
+from search.views import search,main
+from results.views import results,ajax_test
+from micro_recommendation.views import recommendation,recommendation_results
+from multi_micro_system.views import multi_system,multi_sysytem_results
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^search/$',search),
     url(r'^results/$',results),
+    url(r'^recommendation/$',recommendation),
+    url(r'^recom_results/$',recommendation_results),
+    url(r'^multi_sysytem/$',multi_system),
+    url(r'^multi_sysytem_results/$',multi_sysytem_results),
+    url(r'^Alpha ant/$',main),
+    url(r'^test_ajax/$',ajax_test),
     url(r'^admin/', admin.site.urls,name='admin')
 ]
